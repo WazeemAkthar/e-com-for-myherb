@@ -22,8 +22,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     // Business owner's phone number (replace with actual number)
     const businessPhoneNumber = '+94756680723'; // Format: country code + phone number without any symbols
     
-    // Create a message about customer interest in the product
-    const message = `Hi, I'm interested in buying this product: ${product.name} - $${product.price.toFixed(2)} CAD. Can you provide more information?`;
+    // Get the current origin (domain) to create absolute URL
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    
+    // Create absolute URL for the product image
+    const absoluteImageUrl = product.image.startsWith('http') 
+      ? product.image 
+      : `${origin}${product.image}`;
+    
+    // Create a message about customer interest in the product including the full image URL
+    const message = `Hi, I'm interested in buying this product: ${product.name} - ${product.price.toFixed(2)} CAD. 
+Product image: ${absoluteImageUrl}
+Can you provide more information?`;
     
     // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
