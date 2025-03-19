@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    @apply bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)];
+  }
+}

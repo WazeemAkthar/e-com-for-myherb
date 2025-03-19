@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 const HeroSection = () => {
   return (
-<div className="relative overflow-hidden bg-gradient-to-r from-gray-50 to-gray-100 py-8 md:py-12">
+<div className="relative overflow-hidden py-8 md:py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center">
           {/* Text Content */}
           <div className="relative z-10 md:w-1/2 max-w-md order-2 md:order-1 -mt-24 md:mt-0 md:-mr-12 h-72">
-            <div className="bg-gradient-to-r from-lime-100 to-amber-50 p-8 md:p-10 rounded-3xl shadow-sm">
+            <div className="bg-[radial-gradient(70.71%_70.71%_at_50%_50%,_#FFE5E5_0%,_#FFE0DA_25%,_#D7FF89_100%)] p-8 md:p-10 rounded-3xl shadow-sm">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
                 Glowing skin, naturally
               </h1>

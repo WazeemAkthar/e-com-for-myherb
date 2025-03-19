@@ -80,11 +80,11 @@ Can you provide more information?`;
         <div className="mt-1 flex items-center">
           {product.oldPrice ? (
             <>
-              <span className="text-sm line-through text-gray-500">${product.oldPrice.toFixed(2)} CAD</span>
-              <span className="ml-2 text-sm font-medium text-black">${product.price.toFixed(2)} CAD</span>
+              <span className="text-sm line-through text-gray-500">Rs. {product.oldPrice.toFixed(2)}/=</span>
+              <span className="ml-2 text-sm font-medium text-black">Rs. {product.price.toFixed(2)}/=</span>
             </>
           ) : (
-            <span className="text-sm font-medium text-black">${product.price.toFixed(2)} CAD</span>
+            <span className="text-sm font-medium text-black">Rs. {product.price.toFixed(2)}/=</span>
           )}
         </div>
         

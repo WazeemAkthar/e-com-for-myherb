@@ -12,7 +12,7 @@ const Header = () => {
   
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="bg-lime-100 py-2 text-center text-sm">
+      <div className="bg-[radial-gradient(70.71%_70.71%_at_50%_50%,_#FFE5E5_0%,_#FFE0DA_25%,_#D7FF89_100%)] py-2 text-center text-sm">
         Save 15% on orders over $50 • Use code MGVF at checkout
       </div>
       

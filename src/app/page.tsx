@@ -29,7 +29,7 @@ export default function Home() {
             />
             <div className="mt-4">
               <h3 className="text-center font-medium">Body Lotion</h3>
-              <p className="text-center mt-1">$25.95 CAD</p>
+              <p className="text-center mt-1">Rs.1525.95 /=</p>
             </div>
           </div>
           <div className="col-span-full md:col-span-1">
@@ -40,7 +40,7 @@ export default function Home() {
             />
             <div className="mt-4">
               <h3 className="text-center font-medium">Micellar Shampoo</h3>
-              <p className="text-center mt-1"><span className="line-through text-gray-500 mr-2">$32.95 CAD</span>$28.95 CAD</p>
+              <p className="text-center mt-1"><span className="line-through text-gray-500 mr-2">Rs.2232.95 /=</span>Rs.1528.95 /=</p>
             </div>
           </div>
         </div>
