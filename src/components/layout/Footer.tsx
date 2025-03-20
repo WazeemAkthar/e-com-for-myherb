@@ -169,7 +169,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-        © 2025, theme-sense-demo Powered by Shopify
+        © 2025, theme-MYHERB-demo Powered by ClaneCode-Labs
       </div>
     </footer>
   );

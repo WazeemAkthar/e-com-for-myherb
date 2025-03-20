@@ -21,13 +21,13 @@ export default function Home() {
       <main className="relative">
         <Header />
         <HeroSection />
-        <section className="py-12 px-4 container mx-auto bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
+        <section className="py-12 px-4 mx-auto bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
           <h2 className="text-2xl font-medium mb-8 text-center">Shop our most trusted formulas</h2>
           <FeaturedProducts />
         </section>
         <MissionSection />
-        <section className="py-12 px-4 container mx-auto bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="py-12 px-4 mx-auto bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
+          <div className="container grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="col-span-full md:col-span-1">
               <img 
                 src="/images/products/BodyLotion.jpg" 

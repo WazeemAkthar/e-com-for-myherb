@@ -10,4 +10,9 @@ export interface Product {
     isSale?: boolean;
     ingredients?: string[];
     howToUse?: string;
+    quantity?: number;
+  }
+
+  export interface CartItem extends Product {
+    quantity: number;
   }
