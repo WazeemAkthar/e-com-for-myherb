@@ -7,7 +7,7 @@ import { Providers } from '@/redux/provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SENSE | Natural Beauty Products',
+  title: 'MYHERB | Natural Beauty Products',
   description: 'Discover our range of natural, vegan, and cruelty-free beauty products',
 };
 

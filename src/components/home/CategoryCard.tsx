@@ -61,7 +61,7 @@ const CategoryCards: React.FC = () => {
   ];
 
   return (
-    <div className="py-12 px-4">
+    <div className="py-12 px-4 bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((category, index) => (

@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const handleWhatsAppContact = () => {
     // Business owner's phone number (replace with actual number)
-    const businessPhoneNumber = '+94756680723'; // Format: country code + phone number without any symbols
+    const businessPhoneNumber = '+94778132025'; // Format: country code + phone number without any symbols
     
     // Get the current origin (domain) to create absolute URL
     const origin = typeof window !== 'undefined' ? window.location.origin : '';
@@ -43,8 +43,8 @@ Can you provide more information?`;
   };
   
   return (
-    <div className="group relative">
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
+    <div className="group relative bg-white rounded-lg shadow-sm">
+      <div className="relative aspect-square overflow-hidden rounded-t-lg bg-gray-100">
         <Link href={`/product/${product.id}`}>
           <div className="relative w-full h-full">
             <Image
@@ -70,8 +70,8 @@ Can you provide more information?`;
         )}
       </div>
       
-      <div className="mt-3">
-        <h3 className="text-sm font-medium">
+      <div className="p-6">
+        <h3 className="text-md font-medium">
           <Link href={`/product/${product.id}`}>
             {product.name}
           </Link>

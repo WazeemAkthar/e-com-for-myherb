@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[radial-gradient(70.71%_70.71%_at_50%_50%,_#FFE5E5_0%,_#FFE0DA_25%,_#D7FF89_100%)] py-16 px-4">
+    <footer className="py-16 px-4">
       {/* Newsletter Section */}
       <div className="max-w-6xl mx-auto mb-12 text-center">
         <h2 className="text-3xl md:text-4xl font-medium text-gray-800 mb-3">

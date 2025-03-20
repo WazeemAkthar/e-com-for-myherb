@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const HeroSection = () => {
   return (
-<div className="relative overflow-hidden py-8 md:py-12">
+<div className="relative overflow-hidden py-8 md:py-12 bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center">
           {/* Text Content */}
