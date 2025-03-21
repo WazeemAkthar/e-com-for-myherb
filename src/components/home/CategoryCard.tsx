@@ -45,18 +45,18 @@ const CategoryCards: React.FC = () => {
   const categories = [
     {
       title: "Skin Care",
-      imageSrc: "/images/SkinCare.jpg", // Replace with actual image path
-      href: "/categories/skin-care"
+      imageSrc: "/images/SkinCare.jpg",
+      href: "/skin-care"
     },
     {
       title: "Body Care",
-      imageSrc: "/images/BodyCare.jpg", // Replace with actual image path
-      href: "/categories/body-care"
+      imageSrc: "/images/BodyCare.jpg",
+      href: "/body-care"
     },
     {
       title: "Nail Polish",
-      imageSrc: "/images/NailPolish.jpg", // Replace with actual image path
-      href: "/categories/nail-polish"
+      imageSrc: "/images/NailPolish.jpg",
+      href: "/nail-polish"
     }
   ];
 

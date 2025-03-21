@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="group relative bg-white rounded-lg shadow-sm">
       <div className="relative aspect-square overflow-hidden rounded-t-lg bg-gray-100">
-        <Link href={`/product/${product.id}`}>
+        <Link href={`../../product/${product.id}`}>
           <div className="relative w-full h-full">
             <Image
               src={product.image}
@@ -72,7 +72,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       
       <div className="p-6">
         <h3 className="text-md font-medium">
-          <Link href={`/product/${product.id}`}>
+          <Link href={`../../product/${product.id}`}>
             {product.name}
           </Link>
         </h3>

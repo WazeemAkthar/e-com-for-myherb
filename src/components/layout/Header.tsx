@@ -91,7 +91,7 @@ const Header = () => {
               aria-label="Search"
               className="text-gray-700 hover:text-black"
             >
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
@@ -104,7 +104,7 @@ const Header = () => {
                   strokeWidth={2}
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
-              </svg>
+              </svg> */}
             </button>
 
             <Link
@@ -215,7 +215,7 @@ const Header = () => {
               Nail Polish
               <span className="bg-black h-0.5 w-0 absolute bottom-0 duration-300 ease-in-out group-hover:w-full left-0 transition-all"></span>
             </Link>
-            <Link
+            {/* <Link
               href="/blog"
               className="text-gray-700 group hover:text-black relative"
             >
@@ -228,7 +228,7 @@ const Header = () => {
             >
               About Us
               <span className="bg-black h-0.5 w-0 absolute bottom-0 duration-300 ease-in-out group-hover:w-full left-0 transition-all"></span>
-            </Link>
+            </Link> */}
           </nav>
         </div>
       </header>
@@ -236,18 +236,44 @@ const Header = () => {
       <header className="relative">
         {/* Mobile menu with animation */}
         <nav
-          className={`fixed top-0 left-0 h-full w-full bg-white border-r shadow-lg z-50 ${menuClass}`}
+          className={`fixed top-0 left-0 h-full w-full bg-white border-r shadow-lg z-50 ${menuClass} bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]`}
         >
-          <div className="flex justify-end p-4">
+          <div className="flex justify-between items-center p-4">
+            <Link
+              href="/"
+              className="flex h-[6rem] justify-center items-center"
+            >
+              <Image
+                src="/images/MYHERB.svg"
+                alt="Logo"
+                width={200}
+                height={50}
+              />
+            </Link>
+
             <button
               onClick={toggleMenu}
-              className="text-gray-700"
+              className="text-white p-2 rounded bg-red-500 hover:bg-red-600 transition-colors border border-red-600 flex items-center justify-center"
               aria-label="Close menu"
             >
-              Close
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
             </button>
           </div>
-          <ul className="px-4 space-y-4">
+          <ul className="px-10 space-y-4">
             <li>
               <Link
                 href="/skin-care"
@@ -271,7 +297,7 @@ const Header = () => {
                 Nail Polish
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/blog" className="text-gray-700 block py-2">
                 Blog
               </Link>
@@ -280,7 +306,7 @@ const Header = () => {
               <Link href="/about" className="text-gray-700 block py-2">
                 About Us
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
@@ -294,10 +320,7 @@ const Header = () => {
       </header>
 
       {/* Cart Sidebar Component */}
-      <CartSidebar
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-      />
+      <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
 };

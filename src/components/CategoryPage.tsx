@@ -7,8 +7,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { products } from "@/mock/products";
-// Import the Product type from your existing file
-import { Product } from "@/types/product"; // Adjust the path as needed
+import { Product } from "@/types/product";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 
@@ -39,10 +38,11 @@ const CategoryPage: React.FC = () => {
 
   // Format price with currency
   const formatPrice = (price: number): string => {
-    return new Intl.NumberFormat("en-ZA", {
+    return new Intl.NumberFormat("en-LK", {
       style: "currency",
-      currency: "ZAR",
-    }).format(price / 100);
+      currency: "LKR",
+      currencyDisplay: "narrowSymbol", // This will use a more compact symbol (Rs.)
+    }).format(price);
   };
 
   // Handle add to cart
@@ -57,7 +57,7 @@ const CategoryPage: React.FC = () => {
         className="fixed top-0 left-0 w-full h-full bg-[radial-gradient(70.71%_70.71%_at_50%_50%,_#FFE5E5_0%,_#FFE0DA_25%,_#D7FF89_100%)] -z-10"
         style={{ width: "100vw", height: "100vh" }}
       />
-      <Header/>
+      <Header />
       <div className="container mx-auto px-4 lg:px-40 py-8 bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
         <h1 className="text-3xl font-semibold mb-8 text-center">
           {formatCategoryName(category)}
@@ -114,7 +114,7 @@ const CategoryPage: React.FC = () => {
                         <span className="text-sm text-gray-400 line-through mr-2">
                           {formatPrice(product.oldPrice)}
                         </span>
-                        <span className="text-red-600 font-semibold">
+                        <span className="text-black font-semibold">
                           {formatPrice(product.price)}
                         </span>
                       </>
