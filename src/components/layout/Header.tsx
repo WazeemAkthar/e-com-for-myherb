@@ -36,12 +36,6 @@ const Header = () => {
     0
   );
 
-  // Calculate total price
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
@@ -80,12 +74,6 @@ const Header = () => {
       document.body.style.overflow = "unset";
     };
   }, [cartOpen]);
-
-  // Function to handle quantity changes (to be implemented in your Redux actions)
-  const handleQuantityChange = (itemId: number, newQuantity: number) => {
-    // This would dispatch to your Redux store
-    console.log("Change quantity for item", itemId, "to", newQuantity);
-  };
 
   return (
     <>
@@ -309,10 +297,6 @@ const Header = () => {
       <CartSidebar
         isOpen={cartOpen}
         onClose={() => setCartOpen(false)}
-        cartItems={cartItems}
-        cartItemCount={cartItemCount}
-        totalPrice={totalPrice}
-        handleQuantityChange={handleQuantityChange}
       />
     </>
   );

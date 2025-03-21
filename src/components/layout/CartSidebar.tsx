@@ -5,19 +5,42 @@ import Image from "next/image";
 import { useSelector, useDispatch } from 'react-redux';
 import { updateQuantity } from '@/redux/slices/cartSlice';
 
-const CartSidebar = ({ isOpen, onClose }) => {
-  const dispatch = useDispatch();
-  const cartItems = useSelector(state => state.cart.items);
-  const cartItemCount = useSelector(state => state.cart.totalQuantity);
-  const totalPrice = useSelector(state => state.cart.totalAmount);
+interface CartItem {
+  id: string;
+  name: string;
+  image?: string;
+  price: number;
+  quantity: number;
+  variant?: string;
+}
 
-  const handleQuantityChange = (id, quantity) => {
-    dispatch(updateQuantity({ id, quantity }));
+interface CartSidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+interface CartState {
+  cart: {
+    items: CartItem[];
+    totalQuantity: number;
+    totalAmount: number;
+  };
+}
+
+const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: CartState) => state.cart.items);
+  const cartItemCount = useSelector((state: CartState) => state.cart.totalQuantity);
+  const totalPrice = useSelector((state: CartState) => state.cart.totalAmount);
+
+  const handleQuantityChange = (id: string, quantity: number) => {
+    if (quantity >= 0) {
+      dispatch(updateQuantity({ id, quantity }));
+    }
   };
 
   return (
     <>
-      {/* Overlay */}
       <div 
         className={`fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${
           isOpen ? 'opacity-50' : 'opacity-0 pointer-events-none'
@@ -25,7 +48,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
         onClick={onClose}
       />
       
-      {/* Sidebar */}
       <div 
         className={`fixed top-0 right-0 h-full w-full max-w-md z-50 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -77,22 +99,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
   );
 };
 
-const EmptyCart = ({ onClose }) => (
+const EmptyCart: React.FC<{ onClose: () => void }> = ({ onClose }) => (
   <div className="flex flex-col items-center justify-center h-full text-center">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-16 w-16 text-gray-400 mb-4"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1}
-        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-      />
-    </svg>
     <p className="mb-4">Your cart is empty</p>
     <button 
       onClick={onClose}
@@ -103,7 +111,10 @@ const EmptyCart = ({ onClose }) => (
   </div>
 );
 
-const CartItemsList = ({ items, handleQuantityChange }) => (
+const CartItemsList: React.FC<{ 
+  items: CartItem[]; 
+  handleQuantityChange: (id: string, quantity: number) => void 
+}> = ({ items, handleQuantityChange }) => (
   <ul className="space-y-4">
     {items.map((item) => (
       <CartItem 
@@ -115,7 +126,10 @@ const CartItemsList = ({ items, handleQuantityChange }) => (
   </ul>
 );
 
-const CartItem = ({ item, handleQuantityChange }) => (
+const CartItem: React.FC<{ 
+  item: CartItem; 
+  handleQuantityChange: (id: string, quantity: number) => void 
+}> = ({ item, handleQuantityChange }) => (
   <li className="flex border-b pb-4">
     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 relative">
       <Image
@@ -128,60 +142,66 @@ const CartItem = ({ item, handleQuantityChange }) => (
     </div>
 
     <div className="ml-4 flex flex-1 flex-col">
-      <div>
-        <div className="flex justify-between text-base font-medium text-gray-900">
-          <h3>{item.name}</h3>
-          <p className="ml-4">Rs. {(item.price * item.quantity).toFixed(2)}/=</p>
-        </div>
-        <p className="mt-1 text-sm text-gray-500">{item.variant || ""}</p>
+      <div className="flex justify-between text-base font-medium text-gray-900">
+        <h3>{item.name}</h3>
+        <p className="ml-4">Rs. {(item.price * item.quantity).toFixed(2)}/=</p>
       </div>
-      <div className="flex flex-1 items-end justify-between text-sm">
-        <div className="flex items-center border rounded">
-          <button 
-            className="px-3 py-1 text-gray-600 hover:bg-gray-100"
-            onClick={() => handleQuantityChange(item.id, Math.max(1, item.quantity - 1))}
-            disabled={item.quantity <= 1}
-          >
-            -
-          </button>
-          <span className="px-3 py-1">{item.quantity}</span>
-          <button 
-            className="px-3 py-1 text-gray-600 hover:bg-gray-100"
-            onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-          >
-            +
-          </button>
-        </div>
+      {item.variant && <p className="text-sm text-gray-500">{item.variant}</p>}
+      <div className="flex items-center space-x-2 mt-2">
         <button 
-          className="text-red-600 hover:text-red-800"
-          onClick={() => handleQuantityChange(item.id, 0)} // Remove item
+          className="px-2 py-1 border rounded" 
+          onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
+          disabled={item.quantity <= 1}
         >
-          Remove
+          -
+        </button>
+        <span>{item.quantity}</span>
+        <button 
+          className="px-2 py-1 border rounded" 
+          onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+        >
+          +
         </button>
       </div>
+      <button 
+        className="text-red-600 hover:text-red-800 mt-2" 
+        onClick={() => handleQuantityChange(item.id, 0)}
+      >
+        Remove
+      </button>
     </div>
   </li>
 );
 
-const CartFooter = ({ totalPrice, onClose }) => (
+const CartFooter: React.FC<{ 
+  totalPrice: number; 
+  onClose: () => void 
+}> = ({ totalPrice, onClose }) => (
   <div className="border-t p-4 space-y-4">
     <div className="flex justify-between text-base font-medium text-gray-900">
       <p>Subtotal</p>
       <p>Rs. {totalPrice.toFixed(2)}/=</p>
     </div>
-    <p className="text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-    <div className="flex flex-col space-y-2">
-      <button
-        className="w-full bg-black text-white py-3 px-4 rounded hover:bg-gray-800 transition-colors"
+    <div className="mt-6">
+      <a
+        href="/checkout"
+        className="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800"
       >
         Checkout
-      </button>
-      <button
-        onClick={onClose}
-        className="w-full py-3 px-4 rounded border border-gray-300 hover:bg-gray-50 transition-colors"
-      >
-        Continue Shopping
-      </button>
+      </a>
+      <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+        <p>
+          or{" "}
+          <button
+            type="button"
+            className="font-medium text-black hover:text-gray-800"
+            onClick={onClose}
+          >
+            Continue Shopping
+            <span aria-hidden="true"> &rarr;</span>
+          </button>
+        </p>
+      </div>
     </div>
   </div>
 );
