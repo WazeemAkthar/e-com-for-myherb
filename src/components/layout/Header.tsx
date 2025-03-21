@@ -77,9 +77,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="text-center text-sm py-2">
+      {/* <div className="text-center text-sm py-2">
         Save 15% on orders over $50 • Use code MGVF at checkout
-      </div>
+      </div> */}
       <header
         className={`sticky top-0 z-40 shadow-sm transition-transform duration-300 ${
           isVisible ? "translate-y-0" : "-translate-y-full"
