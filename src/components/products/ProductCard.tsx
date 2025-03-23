@@ -104,18 +104,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="mt-3">
           <button
             onClick={handleAddToCart}
-            className="rounded-md bg-black py-2 text-xs font-medium text-white hover:bg-gray-800 transition-colors w-full"
+            className="rounded-md bg-black py-2 text-xs font-medium text-white hover:bg-gray-800 transition-all duration-300 w-full transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-400"
           >
             Add to Cart
           </button>
 
           {/* Confirmation message */}
           {showConfirmation && (
-            <div className="absolute top-0 left-0 right-0 -mt-10 bg-green-500 text-white text-xs py-2 px-4 rounded-md text-center transform transition-all duration-300 ease-in-out">
-              Product added to cart!
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+              <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
+                Product added to cart!
+              </div>
             </div>
           )}
-
           {/* <button
             onClick={handleWhatsAppContact}
             className="rounded-md bg-green-600 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors flex items-center justify-center"
