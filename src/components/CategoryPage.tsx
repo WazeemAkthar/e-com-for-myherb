@@ -74,7 +74,7 @@ const CategoryPage: React.FC = () => {
             {filteredProducts.map((product: Product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="relative">
                   <div className="h-64 relative overflow-hidden">

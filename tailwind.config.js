@@ -33,6 +33,12 @@ module.exports = {
           '2xl': '1.5rem',
           '3xl': '2rem',
         },
+        listStyleType: {
+          'emoji-star': '"⭐ "',
+          'emoji-heart': '"❤️ "',
+          'emoji-check': '"✅ "',
+          'emoji-sparkle': '"✨ "',
+        }
       },
     },
     plugins: [],

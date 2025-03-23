@@ -183,7 +183,7 @@ const ProductDetail: React.FC = () => {
                   Ingredients
                 </summary>
                 <div className="pl-4 pt-2 pb-4">
-                  <ul className="list-disc list-inside space-y-1">
+                  <ul className="list-inside space-y-1 list-emoji list-emoji-check">
                     {product.ingredients?.map(
                       (ingredient: string, index: number) => (
                         <li key={index} className="text-gray-700">

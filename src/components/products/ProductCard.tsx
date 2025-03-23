@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '@/redux/slices/cartSlice';
-import { Product } from '@/types/product';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/slices/cartSlice";
+import { Product } from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
@@ -13,39 +13,48 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
-  
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+
+    // Show the confirmation
+    setShowConfirmation(true);
+
+    // Hide the confirmation after 3 seconds
+    setTimeout(() => {
+      setShowConfirmation(false);
+    }, 3000);
   };
 
-//   const handleWhatsAppContact = () => {
-//     // Business owner's phone number (replace with actual number)
-//     const businessPhoneNumber = '+94778132025'; // Format: country code + phone number without any symbols
-    
-//     // Get the current origin (domain) to create absolute URL
-//     const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    
-//     // Create absolute URL for the product image
-//     const absoluteImageUrl = product.image.startsWith('http') 
-//       ? product.image 
-//       : `${origin}${product.image}`;
-    
-//     // Create a message about customer interest in the product including the full image URL
-//     const message = `Hi, I'm interested in buying this product: ${product.name} - ${product.price.toFixed(2)} CAD. 
-// Product image: ${absoluteImageUrl}
-// Can you provide more information?`;
-    
-//     // Encode the message for URL
-//     const encodedMessage = encodeURIComponent(message);
-    
-//     // Open WhatsApp with the pre-filled message to the business number
-//     window.open(`https://wa.me/${businessPhoneNumber}?text=${encodedMessage}`, '_blank');
-//   };
-  
+  //   const handleWhatsAppContact = () => {
+  //     // Business owner's phone number (replace with actual number)
+  //     const businessPhoneNumber = '+94778132025'; // Format: country code + phone number without any symbols
+
+  //     // Get the current origin (domain) to create absolute URL
+  //     const origin = typeof window !== 'undefined' ? window.location.origin : '';
+
+  //     // Create absolute URL for the product image
+  //     const absoluteImageUrl = product.image.startsWith('http')
+  //       ? product.image
+  //       : `${origin}${product.image}`;
+
+  //     // Create a message about customer interest in the product including the full image URL
+  //     const message = `Hi, I'm interested in buying this product: ${product.name} - ${product.price.toFixed(2)} CAD.
+  // Product image: ${absoluteImageUrl}
+  // Can you provide more information?`;
+
+  //     // Encode the message for URL
+  //     const encodedMessage = encodeURIComponent(message);
+
+  //     // Open WhatsApp with the pre-filled message to the business number
+  //     window.open(`https://wa.me/${businessPhoneNumber}?text=${encodedMessage}`, '_blank');
+  //   };
+
   return (
-    <div className="group relative bg-white rounded-lg shadow-sm">
+    <div className="group relative bg-white rounded-lg shadow-lg">
       <div className="relative aspect-square overflow-hidden rounded-t-lg bg-gray-100">
-        <Link href={`../../product/${product.id}`}>
+        <Link href={`/products/${product.id}`}>
           <div className="relative w-full h-full">
             <Image
               src={product.image}
@@ -56,38 +65,42 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             />
           </div>
         </Link>
-        
+
         {product.isSale && (
           <div className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded">
             Sale
           </div>
         )}
-        
+
         {product.isNew && (
           <div className="absolute top-2 left-2 bg-lime-500 text-white text-xs px-2 py-1 rounded">
             New
           </div>
         )}
       </div>
-      
+
       <div className="p-6">
         <h3 className="text-md font-medium">
-          <Link href={`../../product/${product.id}`}>
-            {product.name}
-          </Link>
+          <Link href={`/products/${product.id}`}>{product.name}</Link>
         </h3>
-        
+
         <div className="mt-1 flex items-center">
           {product.oldPrice ? (
             <>
-              <span className="text-sm line-through text-gray-500">Rs. {product.oldPrice.toFixed(2)}/=</span>
-              <span className="ml-2 text-sm font-medium text-black">Rs. {product.price.toFixed(2)}/=</span>
+              <span className="text-sm line-through text-gray-500">
+                Rs. {product.oldPrice.toFixed(2)}/=
+              </span>
+              <span className="ml-2 text-sm font-medium text-black">
+                Rs. {product.price.toFixed(2)}/=
+              </span>
             </>
           ) : (
-            <span className="text-sm font-medium text-black">Rs. {product.price.toFixed(2)}/=</span>
+            <span className="text-sm font-medium text-black">
+              Rs. {product.price.toFixed(2)}/=
+            </span>
           )}
         </div>
-        
+
         <div className="mt-3">
           <button
             onClick={handleAddToCart}
@@ -95,7 +108,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             Add to Cart
           </button>
-          
+
+          {/* Confirmation message */}
+          {showConfirmation && (
+            <div className="absolute top-0 left-0 right-0 -mt-10 bg-green-500 text-white text-xs py-2 px-4 rounded-md text-center transform transition-all duration-300 ease-in-out">
+              Product added to cart!
+            </div>
+          )}
+
           {/* <button
             onClick={handleWhatsAppContact}
             className="rounded-md bg-green-600 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors flex items-center justify-center"

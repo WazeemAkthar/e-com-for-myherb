@@ -14,9 +14,9 @@ const Footer = () => {
     <footer className="py-16 px-4">
       {/* Newsletter Section */}
       <div className="max-w-6xl mx-auto mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-medium text-gray-800 mb-3">
+        {/* <h2 className="text-3xl md:text-4xl font-medium text-gray-800 mb-3">
           Get 20% off your first order
-        </h2>
+        </h2> */}
         <p className="text-gray-600 mb-6">
           Join our email list for exclusive offers and the latest news.
         </p>
@@ -93,7 +93,7 @@ const Footer = () => {
         </div>
 
         {/* Our Store Column */}
-        <div>
+        {/* <div>
           <h3 className="font-medium text-xl mb-4 text-gray-800">Our Store</h3>
           <p className="text-gray-600 mb-1">3455 St Laurent Blvd</p>
           <p className="text-gray-600 mb-3">Montreal, Quebec H2X 2T6</p>
@@ -103,7 +103,7 @@ const Footer = () => {
           <p className="text-gray-600">
             <span className="font-medium">Sat - Sun</span> 10a.m. - 6p.m.
           </p>
-        </div>
+        </div> */}
 
         <img
           src="/images/plant.png"
@@ -169,7 +169,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-        © 2025, theme-MYHERB-demo Powered by ClaneCode-Labs
+        © 2025, MYHERB Powered by ClaneCode-Labs
       </div>
     </footer>
   );

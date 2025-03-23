@@ -91,7 +91,7 @@ const Header = () => {
               aria-label="Search"
               className="text-gray-700 hover:text-black"
             >
-              {/* <svg
+             {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
@@ -238,7 +238,7 @@ const Header = () => {
         <nav
           className={`fixed top-0 left-0 h-full w-full bg-white border-r shadow-lg z-50 ${menuClass} bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]`}
         >
-          <div className="flex justify-between items-center p-4">
+          <div className="flex gap-32 items-center p-4">
             <Link
               href="/"
               className="flex h-[6rem] justify-center items-center"
@@ -277,23 +277,23 @@ const Header = () => {
             <li>
               <Link
                 href="/skin-care"
-                className="text-gray-700 block hover:underline-offset-1 py-2"
+                className="text-gray-700 block hover:underline-offset-1 py-2 [border-bottom:1px_solid]"
               >
                 Skin Care
               </Link>
             </li>
             <li>
-              <Link href="/hair-care" className="text-gray-700 block py-2">
+              <Link href="/hair-care" className="text-gray-700 block py-2 [border-bottom:1px_solid]">
                 Hair Care
               </Link>
             </li>
             <li>
-              <Link href="/body-care" className="text-gray-700 block py-2">
+              <Link href="/body-care" className="text-gray-700 block py-2 [border-bottom:1px_solid]">
                 Body Care
               </Link>
             </li>
             <li>
-              <Link href="/nail-polish" className="text-gray-700 block py-2">
+              <Link href="/nail-polish" className="text-gray-700 block py-2 [border-bottom:1px_solid]">
                 Nail Polish
               </Link>
             </li>
