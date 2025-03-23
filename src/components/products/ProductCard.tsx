@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { Product } from "@/types/product";
+import { ShoppingCart, Check } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -14,12 +15,32 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
+
+  // const handleAddToCart = () => {
+  //   dispatch(addToCart(product));
+
+  //   // Show the confirmation
+  //   setShowConfirmation(true);
+
+  //   // Hide the confirmation after 3 seconds
+  //   setTimeout(() => {
+  //     setShowConfirmation(false);
+  //   }, 3000);
+  // };
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+    // Set button to "adding" state
+    setIsAdding(true);
 
     // Show the confirmation
     setShowConfirmation(true);
+
+    // After a short delay, return button to normal
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 1000);
 
     // Hide the confirmation after 3 seconds
     setTimeout(() => {
@@ -104,16 +125,31 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="mt-3">
           <button
             onClick={handleAddToCart}
-            className="rounded-md bg-black py-2 text-xs font-medium text-white hover:bg-gray-800 transition-all duration-300 w-full transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            disabled={isAdding}
+            className={`rounded-md py-2 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
+              isAdding
+                ? "bg-green-500 scale-105"
+                : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"
+            }`}
           >
-            Add to Cart
+            {isAdding ? (
+              <>
+                <Check size={16} className="animate-bounce" />
+                <span>Added to Cart!</span>
+              </>
+            ) : (
+              <>
+                <ShoppingCart size={16} />
+                <span>Add to Cart</span>
+              </>
+            )}
           </button>
 
           {/* Confirmation message */}
           {showConfirmation && (
-            <div className="fixed inset-0 flex items-center justify-center z-50">
+            <div className="fixed inset-0 flex flex-column items-center justify-center z-50">
               <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
-                Product added to cart!
+                {product.name} added to cart!
               </div>
             </div>
           )}
