@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     // Hide the confirmation after 3 seconds
     setTimeout(() => {
       setShowConfirmation(false);
-    }, 3000);
+    }, 1000);
   };
 
   //   const handleWhatsAppContact = () => {

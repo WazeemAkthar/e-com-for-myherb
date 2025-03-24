@@ -195,13 +195,12 @@ const Checkout = () => {
               </div>
               <div className="mt-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address*
+                  Email Address ( optional )
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  required
                   value={shippingInfo.email}
                   onChange={handleShippingChange}
                   className="w-full p-2 border border-gray-300 rounded"

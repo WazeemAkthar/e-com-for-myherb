@@ -59,7 +59,7 @@ const ProductDetail: React.FC = () => {
         // Hide the confirmation after 3 seconds
         setTimeout(() => {
           setShowConfirmation(false);
-        }, 3000);
+        }, 1000);
       }
     }
   };

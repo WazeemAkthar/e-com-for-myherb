@@ -81,7 +81,7 @@ const CategoryPage: React.FC = () => {
         ...prev,
         [product.id]: false
       }));
-    }, 3000);
+    }, 1000);
   };
 
   return (
