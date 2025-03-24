@@ -10,6 +10,7 @@ import { products } from "@/mock/products";
 import { Product } from "@/types/product";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
+import ComingSoonProducts from "./layout/ComingSoonProducts";
 
 const CategoryPage: React.FC = () => {
   const params = useParams();
@@ -64,11 +65,7 @@ const CategoryPage: React.FC = () => {
         </h1>
 
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-lg text-gray-600">
-              No products found in this category.
-            </p>
-          </div>
+            <ComingSoonProducts />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product: Product) => (

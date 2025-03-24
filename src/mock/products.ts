@@ -59,7 +59,7 @@ export interface Product {
     {
       id: 'p5',
       name: 'Body Lotion',
-      category: 'body-care',
+      category: 'skin-care',
       price: 4225.95,
       image: '/images/products/BodyLotion.jpg',
       description: 'Rich and hydrating body lotion that absorbs quickly for silky-smooth skin.',
@@ -70,7 +70,7 @@ export interface Product {
     {
       id: 'p6',
       name: 'Everything Body Soap',
-      category: 'body-care',
+      category: 'skin-care',
       price: 1119.95,
       image: '/images/body-soap.jpg',
       description: 'Gentle cleansing bar suitable for face, body, and even hair. Fragrance-free and pH balanced.',
@@ -80,7 +80,7 @@ export interface Product {
     {
       id: 'p7',
       name: 'Micellar Shampoo',
-      category: 'hair-care',
+      category: 'skin-care',
       price: 1528.95,
       oldPrice: 2232.95,
       image: '/images/shampoo.jpg',
