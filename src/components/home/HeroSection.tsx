@@ -17,7 +17,7 @@ const HeroSection = () => {
                 Indulge in plant-based skin care for naturally radiant results.
               </p>
               <Link 
-                href="/products"
+                href="/skin-care"
                 className="inline-block bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Shop now

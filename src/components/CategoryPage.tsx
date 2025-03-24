@@ -11,12 +11,15 @@ import { Product } from "@/types/product";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 import ComingSoonProducts from "./layout/ComingSoonProducts";
+import { ShoppingCart, Check } from "lucide-react";
 
 const CategoryPage: React.FC = () => {
   const params = useParams();
   const category = params.category as string;
   const dispatch = useDispatch();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [isAdding, setIsAdding] = useState(false);
 
   // Format category name for display
   const formatCategoryName = (categorySlug: string): string => {
@@ -49,6 +52,22 @@ const CategoryPage: React.FC = () => {
   // Handle add to cart
   const handleAddToCart = (product: Product): void => {
     dispatch(addToCart(product));
+
+    // Set button to "adding" state
+    setIsAdding(true);
+
+    // Show the confirmation
+    setShowConfirmation(true);
+
+    // After a short delay, return button to normal
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 1000);
+
+    // Hide the confirmation after 3 seconds
+    setTimeout(() => {
+      setShowConfirmation(false);
+    }, 3000);
   };
 
   return (
@@ -65,7 +84,7 @@ const CategoryPage: React.FC = () => {
         </h1>
 
         {filteredProducts.length === 0 ? (
-            <ComingSoonProducts />
+          <ComingSoonProducts />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product: Product) => (
@@ -128,10 +147,34 @@ const CategoryPage: React.FC = () => {
 
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="mt-4 w-full bg-black text-white py-2 hover:bg-gray-800 transition-colors duration-200"
+                    disabled={isAdding}
+                    className={`rounded-md py-2 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
+                      isAdding
+                        ? "bg-green-500 scale-105"
+                        : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"
+                    }`}
                   >
-                    Add to Cart
+                    {isAdding ? (
+                      <>
+                        <Check size={16} className="animate-bounce" />
+                        <span>Added to Cart!</span>
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingCart size={16} />
+                        <span>Add to Cart</span>
+                      </>
+                    )}
                   </button>
+
+                  {/* Confirmation message */}
+                  {showConfirmation && (
+                    <div className="fixed inset-0 flex items-center justify-center z-50">
+                      <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
+                        {product.name} <br /> added to cart!
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
