@@ -30,24 +30,24 @@ export default function Home() {
           <div className="container grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="col-span-full md:col-span-1">
               <img 
-                src="/images/products/BodyLotion.jpg" 
+                src="/images/products/fecheredproduct1.jpg" 
                 alt="Body Lotion" 
                 className="w-full h-auto rounded-lg object-cover aspect-square"
               />
               <div className="mt-4">
-                <h3 className="text-center font-medium">Body Lotion</h3>
-                <p className="text-center mt-1">Rs.1525.95 /=</p>
+                <h3 className="text-center font-medium">BRIGHTENING SOLUTION</h3>
+                {/* <p className="text-center mt-1">Rs.1525.95 /=</p> */}
               </div>
             </div>
             <div className="col-span-full md:col-span-1">
               <img 
-                src="/images/shampoo.jpg" 
+                src="/images/products/PIMPLECURE.jpg" 
                 alt="Micellar Shampoo" 
                 className="w-full h-auto rounded-lg object-cover aspect-square"
               />
               <div className="mt-4">
-                <h3 className="text-center font-medium">Micellar Shampoo</h3>
-                <p className="text-center mt-1"><span className="line-through text-gray-500 mr-2">Rs.2232.95 /=</span>Rs.1528.95 /=</p>
+                <h3 className="text-center font-medium">PIMPLE CURE</h3>
+                {/* <p className="text-center mt-1"><span className="line-through text-gray-500 mr-2">Rs.2232.95 /=</span>Rs.1528.95 /=</p> */}
               </div>
             </div>
           </div>

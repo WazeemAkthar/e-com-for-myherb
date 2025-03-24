@@ -76,7 +76,7 @@ const Footer = () => {
                 Nail Polish
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/blog" className="text-gray-600 hover:text-gray-800">
                 Blog
               </Link>
@@ -88,7 +88,7 @@ const Footer = () => {
               >
                 About Us
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
 
