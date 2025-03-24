@@ -76,7 +76,7 @@ const Checkout = () => {
 
   const redirectToWhatsApp = () => {
     // Remove the + symbol from the phone number
-    const phoneNumber = "+94778132025"; // Just the country code and number without +
+    const phoneNumber = "+94756454994"; // Just the country code and number without +
     
     // Create a simpler message format
     let message = `New Order #${orderNumber}\n`;

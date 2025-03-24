@@ -52,7 +52,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
       />
 
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-md z-50 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full max-w-md z-50 bg-white shadow-xl transform transition-transform duration-300 ease-in-out bg-[radial-gradient(70.71%_70.71%_at_50%_50%,_#FFE5E5_0%,_#FFE0DA_25%,_#D7FF89_100%)] ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } flex flex-col`}
       >

@@ -10,6 +10,7 @@ import { products } from "@/mock/products";
 import { Product } from "@/types/product";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
+import { ShoppingCart, Check } from "lucide-react";
 
 const ProductDetail: React.FC = () => {
   const params = useParams();
@@ -17,6 +18,8 @@ const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
 
   // Fetch product based on ID
   useEffect(() => {
@@ -43,6 +46,20 @@ const ProductDetail: React.FC = () => {
       // Add product to cart with selected quantity
       for (let i = 0; i < quantity; i++) {
         dispatch(addToCart(product));
+        setIsAdding(true);
+
+        // Show the confirmation
+        setShowConfirmation(true);
+
+        // After a short delay, return button to normal
+        setTimeout(() => {
+          setIsAdding(false);
+        }, 1000);
+
+        // Hide the confirmation after 3 seconds
+        setTimeout(() => {
+          setShowConfirmation(false);
+        }, 3000);
       }
     }
   };
@@ -171,10 +188,34 @@ const ProductDetail: React.FC = () => {
 
             <button
               onClick={handleAddToCart}
-              className="w-full bg-black text-white py-3 font-medium hover:bg-gray-800 transition-colors duration-200 mb-8"
+              disabled={isAdding}
+              className={`rounded-md py-2 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
+                isAdding
+                  ? "bg-green-500 scale-105"
+                  : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"
+              }`}
             >
-              Add to Cart
+              {isAdding ? (
+                <>
+                  <Check size={16} className="animate-bounce" />
+                  <span>Added to Cart!</span>
+                </>
+              ) : (
+                <>
+                  <ShoppingCart size={16} />
+                  <span>Add to Cart</span>
+                </>
+              )}
             </button>
+
+            {/* Confirmation message */}
+            {showConfirmation && (
+              <div className="fixed inset-0 flex items-center justify-center z-50">
+                <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
+                  {product.name} <br /> added to cart!
+                </div>
+              </div>
+            )}
 
             {/* Product details accordion */}
             <div className="border-t border-gray-200 pt-6">
