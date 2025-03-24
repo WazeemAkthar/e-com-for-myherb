@@ -18,8 +18,10 @@ const CategoryPage: React.FC = () => {
   const category = params.category as string;
   const dispatch = useDispatch();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-    const [showConfirmation, setShowConfirmation] = useState(false);
-    const [isAdding, setIsAdding] = useState(false);
+  // Track adding state for each product using its ID
+  const [addingProducts, setAddingProducts] = useState<Record<string, boolean>>({});
+  // Track confirmation state for each product using its ID
+  const [confirmationProducts, setConfirmationProducts] = useState<Record<string, boolean>>({});
 
   // Format category name for display
   const formatCategoryName = (categorySlug: string): string => {
@@ -48,25 +50,37 @@ const CategoryPage: React.FC = () => {
       currencyDisplay: "narrowSymbol", // This will use a more compact symbol (Rs.)
     }).format(price);
   };
-
+  
   // Handle add to cart
   const handleAddToCart = (product: Product): void => {
     dispatch(addToCart(product));
 
-    // Set button to "adding" state
-    setIsAdding(true);
+    // Set this specific product to "adding" state
+    setAddingProducts(prev => ({
+      ...prev,
+      [product.id]: true
+    }));
 
-    // Show the confirmation
-    setShowConfirmation(true);
+    // Show the confirmation for this specific product
+    setConfirmationProducts(prev => ({
+      ...prev,
+      [product.id]: true
+    }));
 
-    // After a short delay, return button to normal
+    // After a short delay, return this specific product's button to normal
     setTimeout(() => {
-      setIsAdding(false);
+      setAddingProducts(prev => ({
+        ...prev,
+        [product.id]: false
+      }));
     }, 1000);
 
-    // Hide the confirmation after 3 seconds
+    // Hide the confirmation for this specific product after 3 seconds
     setTimeout(() => {
-      setShowConfirmation(false);
+      setConfirmationProducts(prev => ({
+        ...prev,
+        [product.id]: false
+      }));
     }, 3000);
   };
 
@@ -147,14 +161,14 @@ const CategoryPage: React.FC = () => {
 
                   <button
                     onClick={() => handleAddToCart(product)}
-                    disabled={isAdding}
+                    disabled={addingProducts[product.id]}
                     className={`rounded-md py-2 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
-                      isAdding
+                      addingProducts[product.id]
                         ? "bg-green-500 scale-105"
                         : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"
                     }`}
                   >
-                    {isAdding ? (
+                    {addingProducts[product.id] ? (
                       <>
                         <Check size={16} className="animate-bounce" />
                         <span>Added to Cart!</span>
@@ -168,7 +182,7 @@ const CategoryPage: React.FC = () => {
                   </button>
 
                   {/* Confirmation message */}
-                  {showConfirmation && (
+                  {confirmationProducts[product.id] && (
                     <div className="fixed inset-0 flex items-center justify-center z-50">
                       <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
                         {product.name} <br /> added to cart!
