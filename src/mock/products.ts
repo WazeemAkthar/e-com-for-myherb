@@ -48,7 +48,7 @@ export interface Product {
       id: 'p4',
       name: 'KUMKUMADI NIGHT SERUM',
       category: 'skin-care',
-      price: 2615.00,
+      price: 1030.00,
       // oldPrice: 3019.95,
       image: '/images/products/KUMKUMADINIGHTSERUM.jpg',
       description: 'MYHERB`S KUMKUMADI NIGHT SERUM is made up with the goodness of 24 herbs. It is renowned for its potential benefits in improving the complexion and overall skin health.',
@@ -58,35 +58,115 @@ export interface Product {
     },
     {
       id: 'p5',
-      name: 'Body Lotion',
+      name: 'AQUA GLOW SERUM',
       category: 'skin-care',
-      price: 4225.95,
-      image: '/images/products/BodyLotion.jpg',
-      description: 'Rich and hydrating body lotion that absorbs quickly for silky-smooth skin.',
-      ingredients: ['Shea Butter', 'Coconut Oil', 'Aloe Vera', 'Vitamin E', 'Essential Oils'],
-      howToUse: 'Apply to clean, dry skin and massage until absorbed. Use daily for best results.',
-      isNew: true
+      price: 1200.00      ,
+      image: '/images/products/AQUAGLOWSERUM.jpg',
+      description: 'Your ultimate glow-up partner is finally here!💖🥳  We’ve been listening, working tirelessly &  perfecting a formula that your skin has been waiting for—and it’s worth the wait.',
+      ingredients: [' Niacinamide: The ultimate multitasker that brightens, soothes, and strengthens your skin barrier. Say goodbye to redness, dullness, acne scars & uneven tone.', 'Alpha Arbutin: Your secret weapon against dark spots & pigmentation, giving you a smooth, radiant complexion.', 'Hyaluronic Acid: The hydration hero that plumps your skin, leaving it soft, dewy & deeply nourished.'],
+      howToUse: 'Take out an adequate amount then gently apply along the skin texture the center of the face outwards, lightly pat the skin🌟Pregnant safe✅🌟For all skin types✅',
+      // isNew: true
     },
     {
       id: 'p6',
-      name: 'Everything Body Soap',
+      name: 'SAFFRON DAY CREAM',
       category: 'skin-care',
-      price: 1119.95,
-      image: '/images/body-soap.jpg',
-      description: 'Gentle cleansing bar suitable for face, body, and even hair. Fragrance-free and pH balanced.',
-      ingredients: ['Saponified Oils', 'Glycerin', 'Kaolin Clay', 'Oatmeal', 'Chamomile Extract'],
-      howToUse: 'Lather between hands or on a washcloth and apply to wet skin. Rinse thoroughly.'
+      price: 1000.00,
+      image: '/images/products/SAFFRONDAYCREAM.jpg',
+      description: 'MYHERB’S SAFFRON DAY CREAM, is designed to nourish and protect your skin throughout the day. Infused with the goodness of saffron extract, it helps to brighten and even out your complexion, while also providing essential hydration. This cream is enriched with antioxidants and moisturizing ingredients to combat the effects of environmental stressors and maintain a youthful, radiant appearance and is an excellent addition to your daily skincare routine."',
+      ingredients: ['Aqua', 'Saffron', 'Sandalwood', 'Almond Oil', 'Rose Oil', 'Rosehip Oil', 'Vitamin E & Essential Oils'],
+      howToUse: 'Gently apply the SAFFRON DAY CREAM on your face and neck. Massage it in with gentle upward strokes until fully absorbed. Use twice a day.'
     },
     {
       id: 'p7',
-      name: 'Micellar Shampoo',
+      name: 'FACIAL HAIR REMOVAL PACK',
       category: 'skin-care',
-      price: 1528.95,
-      oldPrice: 2232.95,
-      image: '/images/shampoo.jpg',
-      description: 'Gentle cleansing shampoo that removes buildup without stripping natural oils.',
-      ingredients: ['Plant-derived Micelles', 'Aloe Vera', 'Chamomile Extract', 'Panthenol', 'Glycerin'],
-      howToUse: 'Apply to wet hair and massage into scalp. Rinse thoroughly. Follow with conditioner.',
-      isSale: true
+      price: 580.00,
+      // oldPrice: 2232.95,
+      image: '/images/products/FACIALHAIRREMOVAL.jpg',
+      description: 'MYHERB’S FACIAL HAIR REMOVAL PACK, a natural solution for smooth, hair-free skin. Crafted with a blend of herbal powders known for their gentle yet effective hair removal properties, this pack offers a rejuvenating alternative to traditional methods. Discover the beauty of herbal care with each application, Embrace the power of nature for a softer, silkier you.',
+      ingredients: ['Turmeric', 'Poolan kilangu', 'Chamomile Extract', 'Kuppaimeni and some more'],
+      howToUse: '1. Mix one tbsp of Facepack powder with water/ rose water/ curd 2. Apply to the required area (upper lip,chin,sidelock) 3. Leave it for 20-30 minutes. 4. Wash off with water. 5. Can be used 3 -4 times a week.',
+      // isSale: true
+    },
+    {
+      id: 'p8',
+      name: 'BRIGHTENING FACE PACK',
+      category: 'skin-care',
+      price: 680.00,
+      image: '/images/products/BRIGHTENINGFACEPACK.jpg',
+      description: 'MYHERB`S BRIGHTENING FACE PACK, meticulously crafted with 13 potent herbal powders including Velmi Venivel, Manjistha, Multani, Sandalwood and some more. Unleash the power of nature to rejuvenate your skin, leaving it visibly brighter and refreshed.',
+      ingredients: ['Vitamin C', 'Hyaluronic Acid', 'Ferulic Acid', 'Vitamin E', 'Botanical Extracts'],
+      howToUse: '1. Mix one tbsp of BRIGHTENING FACE PACK powder with water/ rosewater/milk/honey 2. Apply to the clean face & neck. 3. Leave on for 15-20minutes. 4. Wash it with water.'
+    },
+    {
+      id: 'p9',
+      name: 'GOLDEN HAIR OIL',
+      category: 'hair-care',
+      price: 580.00,
+      image: '/images/products/GOLDENHAIROIL.jpg',
+      description: 'MYHERB`s GOLDEN HAIR OIL is a carefully curated blend of nature`s finest ingredients, featuring Coconut oil, Castor oil, Almond oil, Black seed oil, Fenugreek & Essential oils.',
+      ingredients: ['Coconut oil', 'Castor oil', 'Almond oil', 'Black seed oil', 'Fenugreek & Essential oils'],
+      howToUse: '1. Take needed amount of oil 2. Apply on the scalp 3. Massage the scalp gently 4. Can use it before bedtime/ keep it at least 1 hour on the scalp5. Rinse off with mild shampoo'
+    },
+    {
+      id: 'p10',
+      name: 'EYEBROW & EYELASH GROWTH SERUM',
+      category: 'skin-care',
+      price: 625.95,
+      image: '/images/hand-cream.jpg',
+      description: 'Moisturizing hand cream that softens and protects dry, rough skin.',
+      ingredients: ['Shea Butter', 'Coconut Oil', 'Aloe Vera', 'Vitamin E', 'Essential Oils'],
+      howToUse: 'Apply to clean, dry hands and massage until absorbed. Use as needed throughout the day.'
+    },
+    {
+      id: 'p11',
+      name: 'Sunscreen Lotion',
+      category: 'skin-care',
+      price: 725.95,
+      image: '/images/sunscreen.jpg',
+      description: 'Broad-spectrum sunscreen that protects against UVA and UVB rays. Water-resistant formula.',
+      ingredients: ['Zinc Oxide', 'Titanium Dioxide', 'Aloe Vera', 'Green Tea Extract', 'Vitamin E'],
+      howToUse: 'Apply liberally to face and body 15 minutes before sun exposure. Reapply every 2 hours.'
+    },
+    {
+      id: 'p12',
+      name: 'Deodorant Stick',
+      category: 'skin-care',
+      price: 425.95,
+      image: '/images/deodorant.jpg',
+      description: 'Natural deodorant that neutralizes odor and absorbs wetness without aluminum or baking soda.',
+      ingredients: ['Arrowroot Powder', 'Coconut Oil', 'Shea Butter', 'Beeswax', 'Essential Oils'],
+      howToUse: 'Apply to clean, dry underarms as needed. Discontinue use if irritation occurs.'
+    },
+    {
+      id: 'p13',
+      name: 'Nail Polish',
+      category: 'nail-polish',
+      price: 525.95,
+      image: '/images/nail-polish.jpg',
+      description: 'Long-lasting nail polish that delivers high-shine color in a single coat.',
+      ingredients: ['Butyl Acetate', 'Ethyl Acetate', 'Nitrocellulose', 'Acetyl Tributyl Citrate', 'Isopropyl Alcohol'],
+      howToUse: 'Apply to clean, dry nails and allow to dry. Apply a second coat for more intense color.'
+    },
+    {
+      id: 'p14',
+      name: 'Cuticle Oil',
+      category: 'nail-polish',
+      price: 325.95,
+      image: '/images/cuticle-oil.jpg',
+      description: 'Nourishing cuticle oil that softens and conditions dry, cracked cuticles.',
+      ingredients: ['Jojoba Oil', 'Vitamin E', 'Lavender Oil', 'Rosemary Oil', 'Tea Tree Oil'],
+      howToUse: 'Apply to cuticles and massage until absorbed. Use daily for best results.'
+    },
+    {
+      id: 'p15',
+      name: 'Nail Strengthener',
+      category: 'nail-polish',
+      price: 425.95,
+      image: '/images/nail-strengthener.jpg',
+      description: 'Strengthening nail treatment that fortifies weak, brittle nails and prevents breakage.',
+      ingredients: ['Calcium', 'Vitamin E', 'Hydrolyzed Protein', 'Biotin', 'Essential Oils'],
+      howToUse: 'Apply to clean, dry nails and allow to dry. Use daily for best results.'
     }
   ];
