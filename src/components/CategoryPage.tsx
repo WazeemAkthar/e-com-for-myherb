@@ -19,9 +19,13 @@ const CategoryPage: React.FC = () => {
   const dispatch = useDispatch();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   // Track adding state for each product using its ID
-  const [addingProducts, setAddingProducts] = useState<Record<string, boolean>>({});
+  const [addingProducts, setAddingProducts] = useState<Record<string, boolean>>(
+    {}
+  );
   // Track confirmation state for each product using its ID
-  const [confirmationProducts, setConfirmationProducts] = useState<Record<string, boolean>>({});
+  const [confirmationProducts, setConfirmationProducts] = useState<
+    Record<string, boolean>
+  >({});
 
   // Format category name for display
   const formatCategoryName = (categorySlug: string): string => {
@@ -50,36 +54,36 @@ const CategoryPage: React.FC = () => {
       currencyDisplay: "narrowSymbol", // This will use a more compact symbol (Rs.)
     }).format(price);
   };
-  
+
   // Handle add to cart
   const handleAddToCart = (product: Product): void => {
     dispatch(addToCart(product));
 
     // Set this specific product to "adding" state
-    setAddingProducts(prev => ({
+    setAddingProducts((prev) => ({
       ...prev,
-      [product.id]: true
+      [product.id]: true,
     }));
 
     // Show the confirmation for this specific product
-    setConfirmationProducts(prev => ({
+    setConfirmationProducts((prev) => ({
       ...prev,
-      [product.id]: true
+      [product.id]: true,
     }));
 
     // After a short delay, return this specific product's button to normal
     setTimeout(() => {
-      setAddingProducts(prev => ({
+      setAddingProducts((prev) => ({
         ...prev,
-        [product.id]: false
+        [product.id]: false,
       }));
     }, 1000);
 
     // Hide the confirmation for this specific product after 3 seconds
     setTimeout(() => {
-      setConfirmationProducts(prev => ({
+      setConfirmationProducts((prev) => ({
         ...prev,
-        [product.id]: false
+        [product.id]: false,
       }));
     }, 1000);
   };
@@ -108,12 +112,14 @@ const CategoryPage: React.FC = () => {
               >
                 <div className="relative">
                   <div className="h-64 relative overflow-hidden">
-                    <Image
-                      src={product.image || "/images/placeholder.jpg"}
-                      alt={product.name}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                    />
+                    <Link href={`/products/${product.id}`}>
+                      <Image
+                        src={product.image || "/images/placeholder.jpg"}
+                        alt={product.name}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </Link>
                   </div>
 
                   {/* Product badges */}
@@ -162,7 +168,7 @@ const CategoryPage: React.FC = () => {
                   <button
                     onClick={() => handleAddToCart(product)}
                     disabled={addingProducts[product.id]}
-                    className={`rounded-md py-2 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
+                    className={`rounded-md py-2 mt-3 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
                       addingProducts[product.id]
                         ? "bg-green-500 scale-105"
                         : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"

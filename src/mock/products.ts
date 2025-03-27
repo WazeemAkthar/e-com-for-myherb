@@ -113,60 +113,50 @@ export interface Product {
       id: 'p10',
       name: 'EYEBROW & EYELASH GROWTH SERUM',
       category: 'skin-care',
-      price: 625.95,
-      image: '/images/hand-cream.jpg',
-      description: 'Moisturizing hand cream that softens and protects dry, rough skin.',
+      price: 700.00,
+      image: '/images/products/EYEBROW & EYELASH GROWTH SERUM.jpg',
+      description: 'MYHERB`s EYEBROW & EYELASH GROWTH SERUM,Enriched with nourishing castor oil, almond oil, and vitamin E, it stimulates follicles for fuller, healthier eyebrows and longer, thicker eyelashes. Transform your beauty routine with this natural, effective solution. Experience luscious lashes and defined brows with our growth serum.',
       ingredients: ['Shea Butter', 'Coconut Oil', 'Aloe Vera', 'Vitamin E', 'Essential Oils'],
-      howToUse: 'Apply to clean, dry hands and massage until absorbed. Use as needed throughout the day.'
+      howToUse: 'Squeeze one drop on to your finger or a cotton swab and gently massage into eyebrow or lash line. It is best to do this at night to let it work overnight.'
     },
     {
       id: 'p11',
-      name: 'Sunscreen Lotion',
+      name: 'BEETROOT LIP SCRUB',
       category: 'skin-care',
-      price: 725.95,
-      image: '/images/sunscreen.jpg',
-      description: 'Broad-spectrum sunscreen that protects against UVA and UVB rays. Water-resistant formula.',
-      ingredients: ['Zinc Oxide', 'Titanium Dioxide', 'Aloe Vera', 'Green Tea Extract', 'Vitamin E'],
-      howToUse: 'Apply liberally to face and body 15 minutes before sun exposure. Reapply every 2 hours.'
+      price: 820.00,
+      image: '/images/products/BEETROOTLIPSCRUB.jpg',
+      description: 'Revitalize your lips with our luxurious Beetroot Lip Scrub. This gentle exfoliating scrub buffs away dry, flaky skin, leaving your lips soft & smooth. Enjoy the sweet, earthy aroma as it nourishes and moisturizes, revealing a radiant, healthy-looking pout. Say goodbye to chapped lips and hello to luscious hydration with our Beetroot Lip Scrub.',
+      ingredients: ['Beetroot powder', 'Brown sugar', 'Shea butter', 'Cocoa butter', 'Beeswax', 'Almond oil', 'Coconut oil'],
+      howToUse: 'Apply needed amount of BEETROOT LIP SCRUB on lips, gently scrub in circular motion for few minutes, then wipe of with wet towel.'
     },
     {
       id: 'p12',
-      name: 'Deodorant Stick',
+      name: 'PINK LIP BALM',
       category: 'skin-care',
-      price: 425.95,
-      image: '/images/deodorant.jpg',
-      description: 'Natural deodorant that neutralizes odor and absorbs wetness without aluminum or baking soda.',
-      ingredients: ['Arrowroot Powder', 'Coconut Oil', 'Shea Butter', 'Beeswax', 'Essential Oils'],
-      howToUse: 'Apply to clean, dry underarms as needed. Discontinue use if irritation occurs.'
+      price: 550.00,
+      image: '/images/products/PINKLIPBALM.jpg',
+      description: ' MYHERB`S PINK LIP BALM, Experience a delicate pink tint that enhances your lip`s natural beauty, courtesy of the alkanet root infusion.',
+      ingredients: ['Alkanet root', 'Almond oil', 'Rose Oil', 'Shea Butter', 'Beeswax & Honey'],
+      howToUse: 'For best results, apply generously on lips before bedtime, Can apply day & night.'
     },
     {
       id: 'p13',
-      name: 'Nail Polish',
-      category: 'nail-polish',
-      price: 525.95,
-      image: '/images/nail-polish.jpg',
+      name: 'MYHERB’S PIMPLE CURE',
+      category: 'combo-pack',
+      price: 2330.00,
+      image: '/images/products/PIMPLECURE.jpg',
       description: 'Long-lasting nail polish that delivers high-shine color in a single coat.',
       ingredients: ['Butyl Acetate', 'Ethyl Acetate', 'Nitrocellulose', 'Acetyl Tributyl Citrate', 'Isopropyl Alcohol'],
       howToUse: 'Apply to clean, dry nails and allow to dry. Apply a second coat for more intense color.'
     },
     {
       id: 'p14',
-      name: 'Cuticle Oil',
-      category: 'nail-polish',
-      price: 325.95,
-      image: '/images/cuticle-oil.jpg',
+      name: 'MYHERB’S BRIGHTENING SOLUTION',
+      category: 'combo-pack',
+      price: 2380.00,
+      image: '/images/products/BRIGHTENINGSOLUTION.jpg',
       description: 'Nourishing cuticle oil that softens and conditions dry, cracked cuticles.',
       ingredients: ['Jojoba Oil', 'Vitamin E', 'Lavender Oil', 'Rosemary Oil', 'Tea Tree Oil'],
       howToUse: 'Apply to cuticles and massage until absorbed. Use daily for best results.'
-    },
-    {
-      id: 'p15',
-      name: 'Nail Strengthener',
-      category: 'nail-polish',
-      price: 425.95,
-      image: '/images/nail-strengthener.jpg',
-      description: 'Strengthening nail treatment that fortifies weak, brittle nails and prevents breakage.',
-      ingredients: ['Calcium', 'Vitamin E', 'Hydrolyzed Protein', 'Biotin', 'Essential Oils'],
-      howToUse: 'Apply to clean, dry nails and allow to dry. Use daily for best results.'
     }
   ];

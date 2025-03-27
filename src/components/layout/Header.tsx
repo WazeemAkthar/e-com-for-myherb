@@ -215,6 +215,13 @@ const Header = () => {
               Nail Polish
               <span className="bg-black h-0.5 w-0 absolute bottom-0 duration-300 ease-in-out group-hover:w-full left-0 transition-all"></span>
             </Link>
+            <Link
+              href="/combo-pack"
+              className="text-gray-700 group hover:text-black relative"
+            >
+              Combo pack
+              <span className="bg-black h-0.5 w-0 absolute bottom-0 duration-300 ease-in-out group-hover:w-full left-0 transition-all"></span>
+            </Link>
             {/* <Link
               href="/blog"
               className="text-gray-700 group hover:text-black relative"
@@ -295,6 +302,11 @@ const Header = () => {
             <li>
               <Link href="/nail-polish" className="text-gray-700 block py-2 [border-bottom:1px_solid]">
                 Nail Polish
+              </Link>
+            </li>
+            <li>
+              <Link href="/combo-pack" className="text-gray-700 block py-2 [border-bottom:1px_solid]">
+                Combo Pack
               </Link>
             </li>
             {/* <li>
