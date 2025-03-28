@@ -9,7 +9,7 @@ export interface Product {
   isNew?: boolean;
   isSale?: boolean;
   ingredients?: string[];
-  howToUse?: string;
+  howToUse?: string[];
   quantity?: number;
 }
 
