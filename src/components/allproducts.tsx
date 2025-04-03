@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { products } from "@/mock/products";
 import { Product } from "@/types/product";
-import ComingSoonProducts from "../layout/ComingSoonProducts";
+import ComingSoonProducts from "./layout/ComingSoonProducts";
 import { ShoppingCart, Check, Filter, ChevronDown } from "lucide-react";
 
 const ProductsPage: React.FC = () => {

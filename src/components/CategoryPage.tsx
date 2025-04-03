@@ -138,7 +138,7 @@ const CategoryPage: React.FC = () => {
 
                 <div className="p-4">
                   <Link href={`/products/${product.id}`} className="block">
-                    <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200">
+                    <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200 line-clamp-2">
                       {product.name}
                     </h2>
                   </Link>

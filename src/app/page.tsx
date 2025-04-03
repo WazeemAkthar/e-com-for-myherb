@@ -21,8 +21,7 @@ export default function Home() {
       <main className="relative">
         <Header />
         <HeroSection />
-        <section className="py-12 px-4 mx-auto bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
-          <h2 className="text-2xl font-medium mb-8 text-center">Shop our most trusted formulas</h2>
+        <section className="py-12 mx-auto bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
           <FeaturedProducts />
         </section>
         <MissionSection />
