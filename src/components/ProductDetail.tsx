@@ -36,7 +36,7 @@ const ProductDetail: React.FC = () => {
     return new Intl.NumberFormat("en-LK", {
       style: "currency",
       currency: "LKR",
-      currencyDisplay: "narrowSymbol", // This will use a more compact symbol (Rs.)
+      // currencyDisplay: "narrowSymbol", // This will use a more compact symbol (Rs.)
     }).format(price);
   };
 

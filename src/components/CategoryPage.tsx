@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
@@ -104,14 +103,14 @@ const CategoryPage: React.FC = () => {
         {filteredProducts.length === 0 ? (
           <ComingSoonProducts />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product: Product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[16.5rem] md:h-auto"
               >
                 <div className="relative">
-                  <div className="h-64 relative overflow-hidden">
+                  <div className="md:h-64 h-32 relative overflow-hidden">
                     <Link href={`/products/${product.id}`}>
                       <Image
                         src={product.image || "/images/placeholder.jpg"}
@@ -139,7 +138,7 @@ const CategoryPage: React.FC = () => {
 
                 <div className="p-4">
                   <Link href={`/products/${product.id}`} className="block">
-                    <h2 className="text-lg font-medium text-gray-800 hover:text-black transition-colors duration-200">
+                    <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200">
                       {product.name}
                     </h2>
                   </Link>
@@ -150,20 +149,20 @@ const CategoryPage: React.FC = () => {
                         <span className="text-sm text-gray-400 line-through mr-2">
                           {formatPrice(product.oldPrice)}
                         </span>
-                        <span className="text-black font-semibold">
+                        <span className="text-black text-sm font-semibold md:text-base">
                           {formatPrice(product.price)}
                         </span>
                       </>
                     ) : (
-                      <span className="font-semibold">
+                      <span className="font-semibold text-sm md:text-base text-black">
                         {formatPrice(product.price)}
                       </span>
                     )}
                   </div>
 
-                  <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+                  {/* <p className="mt-2 text-sm text-gray-600 line-clamp-2">
                     {product.description}
-                  </p>
+                  </p> */}
 
                   <button
                     onClick={() => handleAddToCart(product)}
