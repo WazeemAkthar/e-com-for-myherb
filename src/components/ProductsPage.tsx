@@ -157,7 +157,7 @@ const ProductsPage: React.FC = () => {
               {filteredProducts.map((product: Product) => (
                 <div
                   key={product.id}
-                  className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[16.5rem] md:h-auto flex flex-col justify-between"
+                  className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 md:h-auto h-fit"
                 >
                   <div className="relative">
                     <div className="md:h-64 h-32 relative overflow-hidden">
@@ -191,7 +191,7 @@ const ProductsPage: React.FC = () => {
                       {formatCategoryName(product.category)}
                     </div> */}
                     <Link href={`/products/${product.id}`} className="block">
-                      <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200 flex flex-col justify-between line-clamp-2">
+                      <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200 line-clamp-2">
                         {product.name}
                       </h2>
                     </Link>
