@@ -241,8 +241,15 @@ const ProductDetail: React.FC = () => {
                   How to Use
                 </summary>
                 <div className="pl-4 pt-2 pb-4">
-                  <p className="text-gray-700">{product.howToUse}</p>
+                  <p className="text-gray-700"></p>
                 </div>
+                <ol className="list-decimal list-inside space-y-1">
+                  {product.howToUse?.map((howToUse: string, index: number) => (
+                    <li key={index} className="text-gray-700">
+                      {howToUse}
+                    </li>
+                  ))}
+                </ol>
               </details>
             </div>
           </div>
