@@ -7,7 +7,7 @@ import { addToCart } from "@/redux/slices/cartSlice";
 import { products } from "@/mock/products";
 import { Product } from "@/types/product";
 import ComingSoonProducts from "../layout/ComingSoonProducts";
-import { ShoppingCart, Check, Filter, ChevronDown } from "lucide-react";
+import { ShoppingCart, Check, Filter, ChevronDown, ChevronUp } from "lucide-react";
 
 const ProductsPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ const ProductsPage: React.FC = () => {
   const [confirmationProducts, setConfirmationProducts] = useState<Record<string, boolean>>({});
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const filterRef = useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   // Get unique categories from products
   const categories = ["all", ...Array.from(new Set(products.map(product => product.category)))];
@@ -101,7 +102,17 @@ const ProductsPage: React.FC = () => {
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     setIsFilterOpen(false);
+    setExpanded(false); // Reset expanded state when changing category
   };
+
+  // Toggle expanded state
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
+
+  // Determine products to display
+  const displayProducts = expanded ? filteredProducts : filteredProducts.slice(0, 4);
+  const hasMoreProducts = filteredProducts.length > 4;
 
   return (
     <>
@@ -110,7 +121,7 @@ const ProductsPage: React.FC = () => {
         className="fixed top-0 left-0 w-full h-full bg-[radial-gradient(70.71%_70.71%_at_50%_50%,_#FFE5E5_0%,_#FFE0DA_25%,_#D7FF89_100%)] -z-10"
         style={{ width: "100vw", height: "100vh" }}
       />
-      <div className="container mx-auto px-4 lg:px-40 py-8 bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
+      <div className="container mx-auto px-4 xl:px-40 py-8 bg-[linear-gradient(90deg,_rgba(240,244,236,1)_7%,_rgba(241,235,226,1)_50%)]">
         <h1 className="text-3xl font-semibold mb-6 text-center">
           Our Products
         </h1>
@@ -153,100 +164,121 @@ const ProductsPage: React.FC = () => {
           {filteredProducts.length === 0 ? (
             <ComingSoonProducts />
           ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {filteredProducts.map((product: Product) => (
-                <div
-                  key={product.id}
-                  className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[16.5rem] md:h-auto"
-                >
-                  <div className="relative">
-                    <div className="md:h-64 h-32 relative overflow-hidden">
-                      <Link href={`/products/${product.id}`}>
-                        <Image
-                          src={product.image || "/images/placeholder.jpg"}
-                          alt={product.name}
-                          fill
-                          className="object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </Link>
-                    </div>
+            <>
+              <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
+                {displayProducts.map((product: Product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 md:h-auto h-fit"
+                  >
+                    <div className="relative">
+                      <div className="md:h-64 h-32 relative overflow-hidden">
+                        <Link href={`/products/${product.id}`}>
+                          <Image
+                            src={product.image || "/images/placeholder.jpg"}
+                            alt={product.name}
+                            fill
+                            className="object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </Link>
+                      </div>
 
-                    {/* Product badges */}
-                    <div className="absolute top-2 left-2 flex flex-col gap-2">
-                      {product.isNew && (
-                        <span className="bg-black text-white text-xs font-semibold px-3 py-1">
-                          NEW
-                        </span>
-                      )}
-                      {product.isSale && (
-                        <span className="bg-red-600 text-white text-xs font-semibold px-3 py-1">
-                          SALE
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="p-4">
-                    {/* <div className="text-xs text-gray-500 mb-1">
-                      {formatCategoryName(product.category)}
-                    </div> */}
-                    <Link href={`/products/${product.id}`} className="block">
-                      <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200 line-clamp-2">
-                        {product.name}
-                      </h2>
-                    </Link>
-
-                    <div className="mt-2 flex items-center">
-                      {product.oldPrice ? (
-                        <>
-                          <span className="text-sm text-gray-400 line-through mr-2">
-                            {formatPrice(product.oldPrice)}
+                      {/* Product badges */}
+                      <div className="absolute top-2 left-2 flex flex-col gap-2">
+                        {product.isNew && (
+                          <span className="bg-black text-white text-xs font-semibold px-3 py-1">
+                            NEW
                           </span>
-                          <span className="text-black text-sm font-semibold md:text-base">
+                        )}
+                        {product.isSale && (
+                          <span className="bg-red-600 text-white text-xs font-semibold px-3 py-1">
+                            SALE
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="p-4 flex flex-col">
+                      <Link href={`/products/${product.id}`} className="block">
+                        <h2 className="md:text-lg text-sm font-medium text-gray-800 hover:text-black transition-colors duration-200 line-clamp-1">
+                          {product.name}
+                        </h2>
+                      </Link>
+
+                      <div className="mt-2 flex items-center">
+                        {product.oldPrice ? (
+                          <>
+                            <span className="text-sm text-gray-400 line-through mr-2">
+                              {formatPrice(product.oldPrice)}
+                            </span>
+                            <span className="text-black text-sm font-semibold md:text-base">
+                              {formatPrice(product.price)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="font-semibold text-sm md:text-base text-black">
                             {formatPrice(product.price)}
                           </span>
-                        </>
-                      ) : (
-                        <span className="font-semibold text-sm md:text-base text-black">
-                          {formatPrice(product.price)}
-                        </span>
+                        )}
+                      </div>
+
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        disabled={addingProducts[product.id]}
+                        className={`rounded-md py-2 mt-3 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
+                          addingProducts[product.id]
+                            ? "bg-green-500 scale-105"
+                            : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"
+                        }`}
+                      >
+                        {addingProducts[product.id] ? (
+                          <>
+                            <Check size={16} className="animate-bounce" />
+                            <span>Added to Cart!</span>
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingCart size={16} />
+                            <span>Add to Cart</span>
+                          </>
+                        )}
+                      </button>
+
+                      {/* Confirmation message */}
+                      {confirmationProducts[product.id] && (
+                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                          <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
+                            {product.name} <br /> added to cart!
+                          </div>
+                        </div>
                       )}
                     </div>
-
-                    <button
-                      onClick={() => handleAddToCart(product)}
-                      disabled={addingProducts[product.id]}
-                      className={`rounded-md py-2 mt-3 text-xs font-medium text-white w-full transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2 ${
-                        addingProducts[product.id]
-                          ? "bg-green-500 scale-105"
-                          : "bg-black hover:bg-gray-800 hover:scale-105 active:scale-95"
-                      }`}
-                    >
-                      {addingProducts[product.id] ? (
-                        <>
-                          <Check size={16} className="animate-bounce" />
-                          <span>Added to Cart!</span>
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingCart size={16} />
-                          <span>Add to Cart</span>
-                        </>
-                      )}
-                    </button>
-
-                    {/* Confirmation message */}
-                    {confirmationProducts[product.id] && (
-                      <div className="fixed inset-0 flex items-center justify-center z-50">
-                        <div className="bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg text-center max-w-xs mx-auto transform transition-all duration-300 ease-in-out">
-                          {product.name} <br /> added to cart!
-                        </div>
-                      </div>
-                    )}
                   </div>
+                ))}
+              </div>
+              
+              {/* Expand/Collapse Button */}
+              {hasMoreProducts && (
+                <div className="flex justify-center mt-8">
+                  <button
+                    onClick={toggleExpanded}
+                    className="flex items-center gap-2 px-6 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+                  >
+                    {expanded ? (
+                      <>
+                        <span>Show Less</span>
+                        <ChevronUp size={18} />
+                      </>
+                    ) : (
+                      <>
+                        <span>Show All Products</span>
+                        <ChevronDown size={18} />
+                      </>
+                    )}
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </div>
       </div>
